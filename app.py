@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 import knn as knn
+import recommender as recommender
 
 app = Flask(__name__)
 
@@ -11,11 +12,11 @@ def home():
 @app.route('/recommend', methods=['GET'])
 def recommend():
     movie_title = request.args.get('title')
-    num_recommendations = int(request.args.get('num', 5))
     try:
-        recommendations = knn.recommend_movies_by_genre(movie_title)
-        return jsonify(recommendations)
+        # recommendations = knn.recommend_movies_by_genre(movie_title)
+        # return jsonify(recommendations)
         # return jsonify(recommendations.to_dict(orient='records'))
+        recommendations = recommender.recommend_movies_collaborative_knn()
     except IndexError:
         return jsonify({"error": "Movie not found!"}), 404
 

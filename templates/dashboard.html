@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie Recommendation System</title>
+    <link rel="stylesheet" href="../static/css/style.css" />
+</head>
+<body>
+    <header>
+        <p class="username">{{ username }}</p>
+        <h1 class="dashboard-page">Movie Recommendation System</h1>
+    </header>
+
+    <main>
+        <!-- Form for Similar Movies -->
+        <form action="/recommend" method="POST" class="recommend-form">
+            <label for="title">Enter a Movie Title:</label>
+            <input type="text" id="title" name="movie_name" required />
+            <button type="submit" class="btn">Get Similar Movies</button>
+        </form>
+
+        <!-- Form for Recommendations Based on Preferences -->
+        <form action="/recommend/preferences" method="POST" class="preferences-form">
+            <button type="submit" class="btn btn-secondary">Get Recommendations Based on My Preferences</button>
+        </form>
+    </main>
+</body>
+</html>

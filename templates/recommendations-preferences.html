@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Recommendations</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+	</head>
+	<body>
+		<header>
+			<p class="username">{{ username }}</p>
+			<h1 class="recommendations-page">Movie Recommendations</h1>
+		</header>
+		{% if error %}
+		    <p class="error-p">{{ error }}</p>
+		    <a class="go-back-link" href="/dashboard">Go Back</a>
+		{% else %}
+		<h2 class="recommendations-movie">Recommendations for user "{{ username }}"</h2>
+		<ul>
+			{% for movie in recommendations %}
+			<li>
+				{{ movie.title }} (Genre: {{ movie.genres }}, Rating: {{ movie.rating
+				}}, Year: {{ movie.release_year }}, Similarity: {{ movie.similarity }})
+			</li>
+			{% endfor %}
+		</ul>
+		<a class="go-back-link" href="/dashboard">Go Back</a>
+		{% endif %}
+	</body>
+</html>

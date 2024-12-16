@@ -1,0 +1,61 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Recommendations</title>
+        <link rel="stylesheet" href="../static/css/style.css">
+	</head>
+	<body>
+		<header>
+			<p class="username">{{ username }}</p>
+			<h1 class="recommendations-page">Movie Recommendations</h1>
+		</header>
+		{% if error %}
+		    <p class="error-p">{{ error }}</p>
+		    <a class="go-back-link" href="/dashboard">Go Back</a>
+		{% else %}
+		<h2 class="recommendations-movie">Recommendations for "{{ movie_name }}"</h2>
+		<ul>
+			{% for movie in recommendations %}
+			<li>
+				{{ movie.title }} (Genre: {{ movie.genres }}, Rating: {{ movie.rating
+				}}, Year: {{ movie.release_year }}, Similarity: {{ movie.similarity }})
+			</li>
+			{% endfor %}
+		</ul>
+		<a class="go-back-link" href="/dashboard">Try Another Movie</a>
+		{% endif %}
+	</body>
+</html>
+
+
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Movie List</title>
+    <link rel="stylesheet" href="../static/css/rec.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">Movie List</h1>
+        <div class="movie-grid">
+            {% for movie in movies %}
+            <div class="movie-card">
+                <div class="movie-header">{{ movie.title }}</div>
+                <div class="movie-genre">{{ movie.genres }}</div>
+                <div class="movie-details">
+                    <div class="detail-box">Rating: {{ movie.rating }}</div>
+                    <div class="detail-box">Year: {{ movie.year }}</div>
+                    <div class="detail-box">Similarity: {{ movie.similarity }}</div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</body>
+</html> -->
+

@@ -1,44 +1,382 @@
+/* ============================= */
+/*          General Styles       */
+/* ============================= */
+
+:root {
+    --primary-color: #e50914;
+    --secondary-color: #b20710;
+    --background-gradient: linear-gradient(to bottom right, #1a1a1a, #000000);
+    --text-color: #f0f0f0;
+    --secondary-text-color: #ccc;
+    --error-color: #ff4d4d;
+    --input-background: #333;
+    --input-focus-background: #444;
+    --box-shadow-color: rgba(229, 9, 20, 0.5);
+    --box-shadow-focus-color: rgba(229, 9, 20, 0.8);
+    --link-color: #e50914;
+    --link-hover-color: #b20710;
+}
+
 body {
-	font-family: Arial, sans-serif;
-	background-color: #f4f4f9;
-	margin: 0;
-	padding: 20px;
-	text-align: center;
+    margin: 0;
+    padding: 0;
+    background: var(--background-gradient);
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+    color: var(--text-color);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    animation: fadeIn 1s ease-in-out;
 }
-.container {
-	max-width: 500px;
-	margin: 0 auto;
-	padding: 20px;
-	background: white;
-	border-radius: 8px;
-	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+h1, h2 {
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+    letter-spacing: 1px;
 }
-input {
-	width: calc(100% - 20px);
-	padding: 10px;
-	margin: 10px 0;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+
+a {
+    text-decoration: none;
+    margin: 0 0.5rem;
+    color: var(--link-color);
+    transition: color 0.3s ease;
 }
-button {
-	padding: 10px 20px;
-	background-color: #007BFF;
-	color: white;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
+
+a:hover {
+    color: var(--link-hover-color);
 }
-button:hover {
-	background-color: #0056b3;
+
+button, input[type="submit"] {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
 }
+
+button:hover, input[type="submit"]:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--box-shadow-color);
+}
+
+button:focus, input[type="submit"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--box-shadow-focus-color);
+}
+
+/* ============================= */
+/*          Home Page Styles     */
+/* ============================= */
+
+.greeting {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.choose-p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    color: var(--secondary-text-color);
+}
+
+.login-and-register-container {
+    display: flex;
+    gap: 1.5rem;
+}
+
+/* ============================= */
+/*         Login Page Styles     */
+/* ============================= */
+
+.login-page {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+form {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text-color);
+}
+
+input[type="text"],
+input[type="password"] {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--input-background);
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--box-shadow-focus-color);
+    background-color: var(--input-focus-background);
+}
+
+.error-p {
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    text-align: center;
+    color: var(--error-color);
+}
+
+/* ============================= */
+/*        Register Page Styles   */
+/* ============================= */
+
+.register-page {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+form[action="/register"] {
+    /* Specific styles for the Register form can be added here if needed */
+}
+
+/* ============================= */
+/*       Dashboard Page Styles   */
+/* ============================= */
+
+header {
+    width: 100%;
+    max-width: 1200px; /* Adjust as needed */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 2rem;
+    box-sizing: border-box;
+}
+
+.dashboard-page {
+    font-size: 2.5rem;
+    margin: 0.5rem 0 1rem 0; /* Top margin for spacing below username */
+    text-align: center;
+}
+
+.username {
+    font-size: 1.2rem;
+    color: var(--secondary-text-color);
+    margin: 0; /* Remove default margins */
+}
+
+main {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 2rem;
+    border-radius: 8px;
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+main form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+}
+
+main label {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-text-color);
+}
+
+main input[type="text"] {
+    padding: 0.5rem;
+    border: none;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    width: 100%;
+    font-size: 1rem;
+    background-color: var(--input-background);
+    color: #fff;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+main input[type="text"]:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--box-shadow-focus-color);
+    background-color: var(--input-focus-background);
+}
+
+.dashboard-button {
+    background-color: var(--primary-color);
+    border: none;
+    border-radius: 4px;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.dashboard-button:hover {
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 10px var(--box-shadow-color);
+}
+
+.dashboard-button:focus {
+    outline: none;
+    box-shadow: 0 0 5px var(--box-shadow-focus-color);
+}
+
+/* ============================= */
+/*      Recommendations Styles   */
+/* ============================= */
+
+.recommendations-page {
+    font-size: 2.5rem;
+    margin: 1rem 0;
+    text-align: center;
+}
+
+.recommendations-movie {
+    font-size: 1.8rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
 ul {
-	list-style: none;
-	padding: 0;
+    list-style-type: none;
+    padding: 0;
+    width: 100%;
 }
+
 li {
-	margin: 5px 0;
-	padding: 10px;
-	background: #f8f9fa;
-	border: 1px solid #ccc;
-	border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    margin-bottom: 0.5rem;
+    border-radius: 4px;
+    font-size: 1rem;
+    color: #fff;
+    transition: background-color 0.3s ease;
+}
+
+li:hover {
+    background-color: rgba(229, 9, 20, 0.2);
+}
+
+.go-back-link {
+    display: inline-block;
+    margin-top: 1.5rem;
+    font-size: 1rem;
+    color: var(--link-color);
+    transition: color 0.3s ease;
+}
+
+.go-back-link:hover {
+    color: var(--link-hover-color);
+}
+
+/* ============================= */
+/*       Responsive Design        */
+/* ============================= */
+
+@media (max-width: 768px) {
+    .greeting {
+        font-size: 2.5rem;
+    }
+
+    .login-page,
+    .register-page,
+    .dashboard-page,
+    .recommendations-page {
+        font-size: 2rem;
+    }
+
+    form, main, ul {
+        width: 80%;
+        padding: 1.5rem;
+    }
+
+    button, input[type="submit"], .dashboard-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    header {
+        padding: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 1rem;
+    }
+
+    .greeting {
+        font-size: 2rem;
+    }
+
+    .choose-p {
+        font-size: 1rem;
+    }
+
+    .login-and-register-container {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    form, main, ul {
+        width: 100%;
+        padding: 1rem;
+    }
+
+    button, input[type="submit"], .dashboard-button {
+        width: 100%;
+        padding: 0.6rem 1rem;
+        font-size: 0.8rem;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .username {
+        margin-top: 0.5rem;
+    }
+
+    .recommendations-movie {
+        font-size: 1.5rem;
+    }
+
+    li {
+        font-size: 0.9rem;
+        padding: 0.8rem;
+    }
+
+    .go-back-link {
+        font-size: 0.9rem;
+    }
+}
+
+/* ============================= */
+/*        Animations             */
+/* ============================= */
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
